@@ -1,0 +1,9 @@
+    .alert-danger {
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+
+    #btn-container {
+        margin-top: 10px;
+    }

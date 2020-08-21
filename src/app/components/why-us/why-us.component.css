@@ -1,0 +1,55 @@
+.why-us{
+
+    
+
+}
+.txt-why-us{
+        width: 100%;
+        margin:auto;
+        font-size: 2rem;
+        font-family: 'FontName', Helvetica, Arial, sans-serif;
+    text-align: center;
+    padding-bottom: 5%;
+    }
+
+.container{
+    width: 60%;
+    margin: auto;
+}
+
+.features{
+    width: 100%;
+    margin: auto;
+    position: relative;
+
+}
+
+.feature-box{
+    width: 100%;
+    margin: auto;
+    padding:0.5em;
+
+}
+
+.feature-ele{
+    width: 40%;
+}
+
+
+
+
+@media only screen and (max-width: 900px) {
+  .container {
+    
+    width: 70%;
+    margin: auto;
+}
+}
+@media only screen and (max-width: 500px) {
+  .container {
+    
+    width: 60%;
+    margin: auto;
+}
+}
+

@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
+@font-face {
+ font-family: FontName;
+ src: url('assets/fonts/Gagalin/TTF/Gagalin-Regular.ttf');
+
+ src: url('assets/fonts/Gagalin/TTF/Gagalin-Regular.ttf') format('embedded-opentype'),
+ url('assets/fonts/Gagalin/OTF/Gagalin-Regular.otf') format('otf'),
+ url('assets/fonts/Gagalin/TTF/Gagalin-Regular.ttf') format('ttf'),
+ url('assets/fonts/Gagalin/TTF/Gagalin-Regular.ttf') format('truetype');
+}
+

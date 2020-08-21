@@ -1,0 +1,87 @@
+
+
+
+.header{
+    background-image: url("../../../assets/images/banner-bg-mobile.png");
+    width: 100%;
+    height: 110vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    background-position: top left;
+    background-color: #f2e8db;
+}
+
+.bg-text{
+    margin:auto;
+    width: 50%;
+    padding-top: 15%;
+    font-size: 2rem;
+     font-family: 'FontName', Helvetica, Arial, sans-serif;
+}
+
+
+.bg-text .brand-name{
+    font-size: 2em;
+font-family: 'Caveat', cursive;
+    font-style: italic;
+    font-weight: bold;
+    color: #77006c;
+}
+
+.btn-get-started{
+    margin: 8em;
+    background-color: #f2e8db;
+}
+
+
+.btn-get-started:hover{
+background-image: url('../../../assets/images/header_background.png');
+background-repeat: no-repeat;
+background-size: inherit;
+
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+    background-position: center right;
+    background-size: cover;
+    height: 100vh;
+    padding-top: 10%;
+}
+}
+
+
+
+
+
+@media only screen and (max-width: 700px) {
+  .bg-text {
+    
+    padding-top: 3%;
+    font-size: 2em;
+}
+}
+
+@media only screen and (max-width: 400px) {
+  .bg-text {
+    
+    padding-top: 1%;
+    font-size: 1.5em;
+    text-align: left;
+}
+}
+@media only screen and (max-width: 1000px) {
+  .btn-get-started {
+    margin: 2px;
+
+}
+}
+
+@media only screen and (max-width: 800px) {
+  .btn-get-started {
+    margin: 2px;
+    font-size: 0.5em;
+    
+}
+}

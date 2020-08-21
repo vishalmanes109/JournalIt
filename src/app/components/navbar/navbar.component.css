@@ -1,0 +1,24 @@
+.logo{
+
+width: 15%;
+
+}
+
+.nav-color{
+    background-color: #4ac1ba;
+}
+
+.nav-text{
+    font-weight: 900;
+    font-family: 'FontName', Helvetica, Arial, sans-serif;
+}
+
+.link{
+    color: black;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo {
+        width: 75%;
+}
+}
