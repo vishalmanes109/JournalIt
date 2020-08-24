@@ -2,18 +2,25 @@
   "name": "journal-it",
   "version": "0.0.0",
   "scripts": {
+    "heroku-postbuild": "ng build --prod",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "engines": {
+    "node": "10.x",
+    "npm": "6.x"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.0.6",
+    "@angular/cli": "~9.0.6",
     "@angular/common": "~9.0.6",
     "@angular/compiler": "~9.0.6",
+    "@angular/compiler-cli": "~9.0.6",
     "@angular/core": "~9.0.6",
     "@angular/forms": "~9.0.6",
     "@angular/platform-browser": "~9.0.6",
@@ -27,8 +34,10 @@
     "jquery": "^3.5.1",
     "mongojs": "^3.1.0",
     "ngx-bootstrap": "^5.6.1",
+    "path": "^0.12.7",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "typescript": "~3.7.5",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
