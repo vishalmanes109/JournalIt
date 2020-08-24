@@ -22,6 +22,11 @@ import { UpdateeditorComponent } from './pages/editor/updateeditor/updateeditor.
 import { HomeComponent } from './components/home/home.component';
 import { ShowEntryComponent } from './pages/show-entry/show-entry.component';
 
+import { SocialLoginModule, SocialAuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider} from "angularx-social-login";
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,9 +49,25 @@ import { ShowEntryComponent } from './pages/show-entry/show-entry.component';
     FormsModule,
     RichTextEditorAllModule,
     HttpClientModule,
-    routing
+    routing,
+    SocialLoginModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: "SocialAuthServiceConfig",
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              "670108846508-sqm970kblmdkmebai15mo1jjq64trv0v.apps.googleusercontent.com"
+            ),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -6,5 +6,7 @@ import { Injectable } from '@angular/core';
 export class DataserviceService {
 
   id:string;
+  isLoggin:boolean;
+  isUpdated:boolean;
   constructor() { }
 }

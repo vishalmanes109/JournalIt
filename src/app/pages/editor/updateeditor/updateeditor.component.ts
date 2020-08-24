@@ -93,7 +93,7 @@ entry=Entry
    //this.text = this.sanitizer.bypassSecurityTrustHtml(form.value.name);
     this.value = "";
     let todays_date = new Date();
-     
+     //this.dataservice.isUpdated=true;
      let title = form.value.title;
      let  body = form.value.name;
      let  date = todays_date.toISOString().slice(0, 10);
@@ -107,13 +107,12 @@ entry=Entry
 
     this.entryservice.updateEntry(body, date, title, this.dataservice.id).subscribe(entry => {
       form.value.title = " ";
-     this.entryservice.delete(this.dataservice.id).subscribe();
-      this.entryservice.getEntries().subscribe();
-      title=" ";
+     this.entryservice.delete(this.dataservice.id).subscribe(f =>{
+           this.router.navigate(['/journal']);
+          });
 
     });
 
-    //this.router.navigate(['/journal']);
   }
 
   // add entry

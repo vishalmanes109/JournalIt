@@ -18,6 +18,8 @@ export class JournalComponent implements OnInit {
     private entryservice: EntryService,
     private dataservice: DataserviceService) {
     
+      if(this.dataservice.isUpdated)
+        window.location.reload();
       this.entryservice.getEntries().subscribe((entries) => {
         this.entries = entries;
       });
@@ -35,6 +37,7 @@ export class JournalComponent implements OnInit {
 
   updateEntry(entry){
     this.dataservice.id=entry._id;
+    this.dataservice.isUpdated=false;
   }
 
   showEntry(entry) {

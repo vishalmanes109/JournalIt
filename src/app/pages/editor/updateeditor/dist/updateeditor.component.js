@@ -75,6 +75,7 @@ var UpdateeditorComponent = /** @class */ (function () {
         //this.text = this.sanitizer.bypassSecurityTrustHtml(form.value.name);
         this.value = "";
         var todays_date = new Date();
+        //this.dataservice.isUpdated=true;
         var title = form.value.title;
         var body = form.value.name;
         var date = todays_date.toISOString().slice(0, 10);
@@ -86,11 +87,10 @@ var UpdateeditorComponent = /** @class */ (function () {
         };
         this.entryservice.updateEntry(body, date, title, this.dataservice.id).subscribe(function (entry) {
             form.value.title = " ";
-            _this.entryservice["delete"](_this.dataservice.id).subscribe();
-            _this.entryservice.getEntries().subscribe();
-            title = " ";
+            _this.entryservice["delete"](_this.dataservice.id).subscribe(function (f) {
+                _this.router.navigate(['/journal']);
+            });
         });
-        //this.router.navigate(['/journal']);
     };
     UpdateeditorComponent.prototype.addEntry = function (event) {
         var _this = this;

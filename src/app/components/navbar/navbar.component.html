@@ -20,6 +20,18 @@
             <li class="nav-item">
                 <a class="nav-link nav-text" routerLink="/journal">Journal</a>
             </li>
+        
+             <ng-container *ngIf="loggedIn; else elseTemplate">
+                 <input class="btn btn-get-started" type="button" (click)="signInGoogle()" value="signin">
+                 {{user.name}}
+                 <img src="{{user.photoUrl}}">
+                 {{ user.email }}
+             </ng-container>
+             <ng-template #elseTemplate>
+                                <input class="btn btn-get-started" type="button" (click)="signInGoogle()"
+                                  value="signin">
+             </ng-template>
+             
         </ul>
     </div>
 </nav>
