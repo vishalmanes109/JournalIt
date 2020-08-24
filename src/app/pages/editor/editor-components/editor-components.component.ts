@@ -78,7 +78,7 @@ export class EditorComponentsComponent implements OnInit {
   @ViewChild("fromRTE", { static: false })
   private rteEle: RichTextEditorComponent;
   public value: string = null;
-  public title: string = " ";
+  public title: string = "";
   rteCreated(): void {
     this.rteEle.element.focus();
   }

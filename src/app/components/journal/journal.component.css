@@ -1,0 +1,22 @@
+.entrylist{
+    width:50%; margin:auto;
+}
+
+.container{
+    margin-top: 3em;
+    background-image: url('../../../assets/images/journalbg.png');
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: contain;
+}
+
+hr{
+      border-top: 1px dashed;
+}
+
+@media only screen and (max-width: 800px) {
+  .entrylist {
+      width: 90%;   
+         
+}
+}

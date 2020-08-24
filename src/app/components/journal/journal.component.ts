@@ -36,6 +36,10 @@ export class JournalComponent implements OnInit {
   updateEntry(entry){
     this.dataservice.id=entry._id;
   }
+
+  showEntry(entry) {
+    this.dataservice.id = entry._id;
+  }
    
 
   ngOnInit(): void {

@@ -19,6 +19,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { routing } from '../app/app-routing.module';
 import { JournalComponent } from './components/journal/journal.component';
 import { UpdateeditorComponent } from './pages/editor/updateeditor/updateeditor.component';
+import { HomeComponent } from './components/home/home.component';
+import { ShowEntryComponent } from './pages/show-entry/show-entry.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { UpdateeditorComponent } from './pages/editor/updateeditor/updateeditor.
     EditorComponentsComponent,
     JournalComponent,
     UpdateeditorComponent,
+    HomeComponent,
+    ShowEntryComponent,
   ],
   imports: [
     BrowserModule,

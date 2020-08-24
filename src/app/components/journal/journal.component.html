@@ -1,15 +1,24 @@
-<div class="container">
-    <div  style="width:50%; margin:auto;" *ngFor="let entry of entries">
-        <div  [innerHTML]>
-           Title:  {{entry.title}} 
-           <br>
-           date: {{entry.date}}
-        </div>
-        <br>
-        <input type="button" class="btn btn-danger" (click)="deleteEntry(entry)" value="delete ">
-       <a routerLink="/update"> <input type="button" class="btn btn-primary" (click)="updateEntry(entry)" value="edit "></a>
-        <br>
-        <hr>
-    </div>
-</div>
+<div>
+    <app-navbar>
+    
+    </app-navbar>
+    <br>
 
+    <div class="container">
+        <div class="entrylist"  *ngFor="let entry of entries">
+            <div [innerHTML]>
+                <strong>Title:</strong>  {{ entry.title.substring(0,30)}}....
+                <br>
+                <strong>date:</strong> {{entry.date}}
+            </div>
+            <br>
+            <input type="button" class="btn btn-danger" (click)="deleteEntry(entry)" value="delete ">
+            <a routerLink="/update"> <input type="button" class="btn btn-primary" (click)="updateEntry(entry)"
+                    value="edit "></a>
+            <a routerLink="/show-all"> <input type="button" class="btn btn-primary" (click)="showEntry(entry)"  value="show"></a>
+            <br>
+            <hr >
+        </div>
+    </div>   
+
+</div>

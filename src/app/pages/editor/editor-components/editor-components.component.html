@@ -1,36 +1,41 @@
 
-<div>
-    <div id='content' class='box-form' style="margin: 0 auto; max-width:1000px; padding:25px;">
-        <form   (ngSubmit)="onSubmit(rteForm)" #rteForm="ngForm">
-            
-            <div class="form-group">
-            <div>
-                    <input type="text" required [(title)]='title' name="title" [(ngModel)]="title">
-            </div>
-                
-                <ejs-richtexteditor #toolsRTE id='alltoolRTE' [toolbarSettings]='tools' #fromRTE #name='ngModel' [(value)]='value' required name="name" [(ngModel)]="value"
-                    (created)="rteCreated()">
-                
-                </ejs-richtexteditor>
-                <div *ngIf="(name.invalid && name.touched)" class="alert alert-danger">
-                    <div *ngIf="name.errors.required">
-                        Value is required.
+<div class="editor">
+    <app-navbar>
+        
+    </app-navbar>
+     <div >
+        <div id='content' class='box-form' style="margin: 0 auto; max-width:1000px; padding:25px;">
+            <form (ngSubmit)="onSubmit(rteForm)" #rteForm="ngForm">
+        
+                <div class="form-group">
+                    <div>
+                        <input type="text" required [(title)]='title' name="title" [(ngModel)]="title"
+                            placeholder="title here...." style="width: 100%; margin: 1em; margin-left: 0.5px;">
+                    </div>
+        
+                    <ejs-richtexteditor #toolsRTE id='alltoolRTE' [toolbarSettings]='tools' #fromRTE #name='ngModel'
+                        [(value)]='value' required name="name" [(ngModel)]="value" (created)="rteCreated()">
+        
+                    </ejs-richtexteditor>
+                    <br>
+                    <div *ngIf="(name.invalid && name.touched)" class="alert alert-danger">
+                        <div *ngIf="name.errors.required">
+                            please write something before submitting.
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="btn-container">
-                <button class="btn btn-primary" type="submit"  ejs-button [disabled]="!rteForm.valid">Submit</button>
-                <button class="btn btn-danger"   type="reset" ejs-button style="margin-left: 20px">Reset</button>
-                
-            </div>
-        </form>
-         <a routerLink="/journal" ><button class="btn btn-info" style="margin-top: 10px">Go back to journal</button></a>
+                <div id="btn-container">
+                    <button class="btn btn-primary" type="submit" ejs-button [disabled]="!rteForm.valid">Submit</button>
+                    <button class="btn btn-danger" type="reset" ejs-button style="margin-left: 20px">Reset</button>
+                    <a routerLink="/journal"><button class="btn btn-info" style="margin-left: 20px">Journal</button></a>
+                </div>
+            </form>
+        </div>
     </div>
-
-    
-
-    
+   
+        
 </div>
+
 
 
 

@@ -1,0 +1,33 @@
+
+<div >
+    <app-navbar>
+    
+    </app-navbar>
+
+    <div class="show">
+        <div class="container">
+            <div class="bg">
+                <div class="title1">
+                    <div class="text">
+                        {{title}}
+                    </div>
+                </div>
+                <div class="entry">
+                    <div class="date">
+                        {{date}}
+                    </div>
+                    <div class="bodydata">
+                        <div [innerHTML]="body"></div>
+                    </div>
+                    <div class="buttons">
+                        <a routerLink="/journal"> <input type="button" class="btn btn-info" value="Back "></a>
+                        <a routerLink="/update"> <input type="button" class="btn btn-primary" (click)="update()"
+                                value="Edit"></a>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+    
+</div>

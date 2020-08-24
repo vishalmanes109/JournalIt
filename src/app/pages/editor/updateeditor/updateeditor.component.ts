@@ -19,7 +19,6 @@ export class UpdateeditorComponent implements OnInit {
   entry_title: string;
   entry_body: string;
   entry_date: Date;
-  setentry;
   public entries: Entry[];
 
   public tools: object = {
@@ -57,17 +56,6 @@ export class UpdateeditorComponent implements OnInit {
 
   public title_box: object = {
     items: [
-      "Bold",
-      "Italic",
-      "Underline",
-      "|",
-      "FontName",
-      "FontColor",
-      "|",
-      "LowerCase",
-      "UpperCase",
-      "|",
-      "FullScreen",
     ],
   };
 
@@ -75,7 +63,12 @@ export class UpdateeditorComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private entryservice: EntryService, 
     private dataservice: DataserviceService,
-    private router: Router) { }
+    private router: Router) { 
+
+    if (this.id == undefined) {
+      router.navigate(['/journal']);
+    }
+    }
 
   ngOnInit(): void { }
   @ViewChild("fromRTE", { static: false })
@@ -92,11 +85,12 @@ entry=Entry
       this.value=entries.body;
       this.title=entries.title;
       this.date=entries.date;
+     this.text = this.sanitizer.bypassSecurityTrustHtml(entries.body);
     });
 
   }
   onSubmit(form: NgForm): void {
-    this.text = this.sanitizer.bypassSecurityTrustHtml(form.value.name);
+   //this.text = this.sanitizer.bypassSecurityTrustHtml(form.value.name);
     this.value = "";
     let todays_date = new Date();
      
@@ -120,8 +114,6 @@ entry=Entry
     });
 
     //this.router.navigate(['/journal']);
-
-
   }
 
   // add entry
