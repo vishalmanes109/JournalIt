@@ -76,7 +76,7 @@ export class UpdateeditorComponent implements OnInit {
   public title: string =" ";
   public value: string ='';
   public id:string=this.dataservice.id;
-  
+  public lastupdatetime:Date;
 
 entry=Entry
   rteCreated(): void {
@@ -85,6 +85,7 @@ entry=Entry
       this.value=entries.body;
       this.title=entries.title;
       this.date=entries.date;
+      this.lastupdatetime=entries.lastUpdateTime
      this.text = this.sanitizer.bypassSecurityTrustHtml(entries.body);
     });
 
@@ -92,20 +93,23 @@ entry=Entry
   onSubmit(form: NgForm): void {
    //this.text = this.sanitizer.bypassSecurityTrustHtml(form.value.name);
     this.value = "";
-    let todays_date = new Date();
+    let todays_date:Date = new Date();
      //this.dataservice.isUpdated=true;
      let title = form.value.title;
      let  body = form.value.name;
-     let  date = todays_date.toISOString().slice(0, 10);
-     
-     var entry={
+     let date = this.date;   // date already present in entry 
+     let username=localStorage.getItem('username');
+     let lastUpdateTime=todays_date; 
+    /* var entry={
        title:title,
        id: this.dataservice.id,
        date:date,
-       body:body
-     };
+       body:body,
+       username: localStorage.getItem('username'),
+       lastUpdateTime: todays_date
+     };*/
 
-    this.entryservice.updateEntry(body, date, title, this.dataservice.id).subscribe(entry => {
+    this.entryservice.updateEntry(body, date, title, this.dataservice.id, username, lastUpdateTime).subscribe(entry => {
       form.value.title = " ";
      this.entryservice.delete(this.dataservice.id).subscribe(f =>{
            this.router.navigate(['/journal']);

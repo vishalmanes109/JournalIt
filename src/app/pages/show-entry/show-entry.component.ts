@@ -16,9 +16,10 @@ import { RouterModule, Router } from '@angular/router';
 export class ShowEntryComponent implements OnInit {
   public id: string = this.dataservice.id;
   //public id: string = "5f3fe656801a820017c899c8";
-  body:any;
-  title:string;
-  date:Date;
+  public body:any;
+  public title:string;
+  public date:Date;
+  public lastupdatetime:Date;
   
   constructor(private sanitizer: DomSanitizer,
     private entryservice: EntryService,
@@ -33,6 +34,8 @@ export class ShowEntryComponent implements OnInit {
       this.title = entries.title;
       this.date = entries.date;
       this.body = this.sanitizer.bypassSecurityTrustHtml(entries.body);
+      this.lastupdatetime = entries.lastUpdateTime;
+
        });
     }
   

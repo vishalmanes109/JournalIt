@@ -19,6 +19,11 @@ background-image: url('../../../assets/images/showbg2.png');
     border-top-right-radius:1em ;
 }
 
+.lastupdate{
+text-align: center;
+margin-top: 2em;
+border-top:2px dotted rgb(44, 26, 26);
+}
 
 
 .date{

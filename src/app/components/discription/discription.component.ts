@@ -13,6 +13,4 @@ export class DiscriptionComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
-
 }

@@ -15,7 +15,7 @@ import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor'
 import { FormsModule }   from '@angular/forms';
 
 
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule , HTTP_INTERCEPTORS} from "@angular/common/http";
 import { routing } from '../app/app-routing.module';
 import { JournalComponent } from './components/journal/journal.component';
 import { UpdateeditorComponent } from './pages/editor/updateeditor/updateeditor.component';
@@ -24,6 +24,13 @@ import { ShowEntryComponent } from './pages/show-entry/show-entry.component';
 
 import { SocialLoginModule, SocialAuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider} from "angularx-social-login";
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+
+import { TokenInterceptorService } from './service/token-interceptor.service';
+import { AuthserviceService } from './service/authservice.service';
+import { DataserviceService } from './service/dataservice.service';
+import { EntryService } from './service/entry.service';
 
 
 
@@ -42,6 +49,8 @@ import { GoogleLoginProvider} from "angularx-social-login";
     UpdateeditorComponent,
     HomeComponent,
     ShowEntryComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,21 +61,12 @@ import { GoogleLoginProvider} from "angularx-social-login";
     routing,
     SocialLoginModule,
   ],
-  providers: [
+  providers: [ AuthserviceService,DataserviceService,EntryService,
     {
-      provide: "SocialAuthServiceConfig",
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              "670108846508-sqm970kblmdkmebai15mo1jjq64trv0v.apps.googleusercontent.com"
-            ),
-          },
-        ],
-      } as SocialAuthServiceConfig,
-    },
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptorService,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent],
 })

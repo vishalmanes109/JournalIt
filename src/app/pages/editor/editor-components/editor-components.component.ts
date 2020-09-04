@@ -5,6 +5,8 @@ import { ToolbarService, LinkService, ImageService, HtmlEditorService, RichTextE
 import { EntryService } from '../../../service/entry.service';
 import { Entry } from '../../../Entry';
 import { Observable } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -71,10 +73,29 @@ export class EditorComponentsComponent implements OnInit {
 
   constructor(
     private sanitizer: DomSanitizer,
-    private entryservice: EntryService
+    private entryservice: EntryService,
+    private router:Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.entryservice.getEntries().subscribe(
+      res => {
+        this.entries = res
+      },
+      err => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 401 || err.status === 500) {
+            this.router.navigate(['/login']);
+          }
+        }
+      }
+    );
+  }
+  
+
+
+
+
   @ViewChild("fromRTE", { static: false })
   private rteEle: RichTextEditorComponent;
   public value: string = null;
@@ -89,7 +110,9 @@ export class EditorComponentsComponent implements OnInit {
     var newEntry = {
       title: form.value.title,
       body: form.value.name,
-      date: date.toISOString().slice(0, 10)
+      date: date.toISOString().slice(0, 10),
+      username: localStorage.getItem('username'),
+      lastUpdateTime: date
     }
     
     this.entryservice.addEntry(newEntry).subscribe(entry => {
@@ -114,7 +137,9 @@ export class EditorComponentsComponent implements OnInit {
     var newEntry = {
       title: this.entry_title,
       body:this.entry_body,
-      date: date.toISOString().slice(0, 10)
+      date: date.toISOString().slice(0, 10),
+      username:localStorage.getItem('username'),
+      lastUpdateTime:date
     }
 
     this.entryservice.addEntry(newEntry).subscribe(entry => {

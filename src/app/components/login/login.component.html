@@ -1,0 +1,36 @@
+
+<div>
+    <app-navbar>
+    
+    </app-navbar>
+    <br>
+    <div class="row pt-5">
+    
+        <div class="col-md-6 mx-auto">
+            <div class="card rounded-0">
+                <div class="card-header">
+                    <h3 class="mb-0">
+                        Login
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form class="form">
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input [(ngModel)]="loginUser.email" name="email" type="text" class="form-control rounded-0"
+                                required>
+    
+                        </div>
+                        <div class="form-group">
+                            <label for="">Password</label>
+                            <input [(ngModel)]="loginUser.password" name="password" type="text"
+                                class="form-control rounded-0" required>
+                        </div>
+                        <button type='button' (click)="Login()" class="btn btn-success float-right"> Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

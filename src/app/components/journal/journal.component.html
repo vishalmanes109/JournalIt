@@ -5,6 +5,26 @@
     <br>
 
     <div class="container">
+        <div class="center p-2">
+            Welcome {{username}}
+        </div>
+
+        <div>
+            <div *ngIf="!isoldselected" class="right">
+                <button class="btn btn-link" (click)="SortDate()"> Old Entries First </button>
+            </div>
+            <div *ngIf="isoldselected" class="right">
+                <button class="btn btn-link" (click)="ngOnInit()"> New Entries First </button>
+            </div>
+        </div>
+        
+        <div class="center" *ngIf="isNoEntry">
+            Welcome to journal It <br>
+            start your journaling journey with us 
+            <br>
+
+            <button [routerLink]="['/editor']" routerLinkActive="router-link-active" >Add enttries</button>
+        </div>
         <div class="entrylist"  *ngFor="let entry of entries">
             <div [innerHTML]>
                 <strong>Title:</strong>  {{ entry.title.substring(0,30)}}....
