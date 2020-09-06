@@ -4,89 +4,141 @@ import { EntryService } from '../../service/entry.service';
 import { Entry } from '../../Entry';
 import { DataserviceService } from '../../service/dataservice.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { stringify } from 'querystring';
+import { Router,NavigationEnd } from '@angular/router';
+import * as CryptoJS from 'crypto-js';
 
 
 @Component({
-  selector: 'app-journal',
-  templateUrl: './journal.component.html',
-  styleUrls: ['./journal.component.css']
+  selector: "app-journal",
+  templateUrl: "./journal.component.html",
+  styleUrls: ["./journal.component.css"],
 })
 export class JournalComponent implements OnInit {
- 
-  entries:Entry[];
-  username:string;
-  isNoEntry=false;
-  isoldselected:boolean;
-  constructor(private sanitizer: DomSanitizer,
+  entries: Entry[] = [];
+  username: string;
+  isNoEntry = false;
+  isoldselected: boolean;
+  name: string;
+  entry_title: string;
+  entry_body: string;
+  private key: string;
+  mySubscription: any;
+  loading:boolean;
+
+  constructor(
+    
     private entryservice: EntryService,
     private dataservice: DataserviceService,
-    private router: Router) {
-    
-    }
+    private router: Router
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+    this.mySubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Trick the Router into believing it's last link wasn't previously loaded
+        this.router.navigated = false;
+      }
+    });
+  }
 
-    // sort entries by date 
-  SortDate(){
-        // getting entries sorted by old entry 
-    this.isoldselected=true;
-    this.username = localStorage.getItem('username');
+  // sort entries by date // new first
+  SortDate() {
+    // getting entries sorted by old entry
+    this.isoldselected = true;
+    this.username = localStorage.getItem("username");
     this.entryservice.getEntries().subscribe(
-      res => {
-        this.entries = res
-        if (this.entries.length == 0) {
+      (res) => {
+        if(res.length==0){
           this.isNoEntry = true;
+          this.loading = false;
         }
+        else{
+          for (var i = 0; i < res.length; i++) {
+            this.entries[i] = JSON.parse(
+              CryptoJS.AES.decrypt(res[i].encdata, this.key).toString(
+                CryptoJS.enc.Utf8
+              )
+            );
+            this.entries[i]._id = res[i]._id;
+          }
+          this.loading=false;
+        }
+       
       },
-      err => {
+      (err) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401 || err.status === 500) {
-            this.router.navigate(['/login']);
+            this.router.navigate(["/login"]);
           }
         }
       }
+      
     );
   }
-    // delete entry
+  
   deleteEntry(entry) {
+   
     this.entryservice.deleteEntry(entry).subscribe();
-    this.entryservice.getEntries().subscribe((entries) => {
-      this.entries = entries;
-    });
-
+    this.router.navigate(['/journal']);
   }
 
-  updateEntry(entry){
-    this.dataservice.id=entry._id;
-    this.dataservice.isUpdated=false;
+  updateEntry(entry) {
+    this.dataservice.id = entry._id;
+    this.dataservice.isUpdated = false;
   }
 
   showEntry(entry) {
+    
     this.dataservice.id = entry._id;
   }
-   
+ 
+  DeleteAll(){
+    this.entryservice.deleteAll().subscribe();
+    this.router.navigate(['/journal']);
+  }
 
   ngOnInit(): void {
-    // getting entries sorted by new entry 
-    this.isoldselected=false;
-    this.username = localStorage.getItem('username');
+   
+    this.loading=true;
+    this.isoldselected = false;
+    this.name = localStorage.getItem("username");
+    this.key = localStorage.getItem("token").trim();
     this.entryservice.getSortedEntries().subscribe(
-      res => {
-        this.entries = res
-        if (this.entries.length == 0) {
+      (res) => {
+        if (res.length == 0) {
           this.isNoEntry = true;
+          this.loading = false;
+        } else {
+          
+          for (var i = 0; i < res.length; i++) {
+            this.entries[i] = JSON.parse(
+              CryptoJS.AES.decrypt(res[i].encdata, this.key).toString(
+                CryptoJS.enc.Utf8
+              )
+            );
+            this.entries[i]._id = res[i]._id;
+          }
+          this.loading=false;
+        
         }
       },
-      err => {
+
+      (err) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401 || err.status === 500) {
-            this.router.navigate(['/login']);
+            this.router.navigate(["/login"]);
           }
         }
       }
     );
   }
 
+  ngOnDestroy() {
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
+    }
+  }
 }
 
 

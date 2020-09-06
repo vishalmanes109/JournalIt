@@ -4,6 +4,10 @@
         
     </app-navbar>
      <div >
+         <h4 class="text-info text-center m-2">
+             Hi {{username}}!
+         </h4>
+         
         <div id='content' class='box-form' style="margin: 0 auto; max-width:1000px; padding:25px;">
             <form (ngSubmit)="onSubmit(rteForm)" #rteForm="ngForm">
         
@@ -14,7 +18,7 @@
                     </div>
         
                     <ejs-richtexteditor #toolsRTE id='alltoolRTE' [toolbarSettings]='tools' #fromRTE #name='ngModel'
-                        [(value)]='value' required name="name" [(ngModel)]="value" (created)="rteCreated()">
+                        [(value)]='value' required name="body" [(ngModel)]="value" (created)="rteCreated()">
         
                     </ejs-richtexteditor>
                     <br>

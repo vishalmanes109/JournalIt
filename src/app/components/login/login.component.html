@@ -14,20 +14,27 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                    <form class="form">
+                    <form #f="ngForm" class="form">
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input [(ngModel)]="loginUser.email" name="email" type="text" class="form-control rounded-0"
-                                required>
+                            <input [(ngModel)]="loginUser.email" name="email" type="email" class="form-control rounded-0"
+                                required email>
     
                         </div>
                         <div class="form-group">
                             <label for="">Password</label>
-                            <input [(ngModel)]="loginUser.password" name="password" type="text"
+                            <input [(ngModel)]="loginUser.password" name="password" type="password"
                                 class="form-control rounded-0" required>
                         </div>
-                        <button type='button' (click)="Login()" class="btn btn-success float-right"> Login</button>
+                        <button type='button' [disabled]="!f.valid" (click)="Login()" class="btn btn-success float-right"> Login</button>
+                        <p style="color:red;">{{f.valid?'':'Please Enter valid Email ID'}}</p>
+                        <p style="color:green;">{{f.valid?'Valid':''}}</p>
+
+
                     </form>
+                    <div style='color:red;'>
+                        {{loginerror}}
+                    </div>
                 </div>
             </div>
         </div>

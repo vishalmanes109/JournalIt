@@ -14,20 +14,26 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                    <form class="form">
+                    <form #f="ngForm"  class="form">
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input [(ngModel)]="registerUser.email" name="email" type="text" class="form-control rounded-0"
+                            <input [(ngModel)]="registerUser.email" name="email" type="email" class="form-control rounded-0"
                                 required>
-    
                         </div>
                         <div class="form-group">
                             <label for="">Password</label>
-                            <input [(ngModel)]="registerUser.password" name="password" type="text"
+                            <input [(ngModel)]="registerUser.password" name="password" type="password"
                                 class="form-control rounded-0" required>
                         </div>
-                        <button type='button' (click)="Register()" class="btn btn-primary float-right"> Register</button>
+                        <button type='button' [disabled]="!f.valid" (click)="Register()" class="btn btn-primary float-right"> Register</button>
+                        <p style="color:red;">{{f.valid ?'':'Please Enter valid Email ID'}}</p>
+                        <p style="color:green;">{{f.valid?'Valid':''}}</p>
                     </form>
+                    <div style="color:red">
+                        {{registererror}}
+                    </div>
+                    <a *ngIf="registererror!= null" type='button' [routerLink]="['/login']" routerLinkActive="router-link-active" class="btn btn-link float-left"> Already Register</a>
+
                 </div>
             </div>
     

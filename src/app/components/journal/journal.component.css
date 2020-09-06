@@ -1,7 +1,14 @@
 .entrylist{
     width:50%; margin:auto;
+    
 }
-
+.text{
+    align-content: center;
+    
+}
+.marginBottom{
+    margin-top: 5em;
+}
 .container{
     margin-top: 3em;
     background-image: url('../../../assets/images/journalbg.png');
@@ -18,5 +25,8 @@ hr{
   .entrylist {
       width: 90%;   
          
+}
+.marginBottom{
+    margin-top: 2em;
 }
 }

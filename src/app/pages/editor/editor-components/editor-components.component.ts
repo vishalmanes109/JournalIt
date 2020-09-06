@@ -7,7 +7,7 @@ import { Entry } from '../../../Entry';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: "app-editor-components",
@@ -21,6 +21,8 @@ export class EditorComponentsComponent implements OnInit {
   entry_date: Date;
   setentry;
   public entries: Entry[];
+  private key:string;
+  username:string;
 
   public tools: object = {
     items: [
@@ -48,26 +50,9 @@ export class EditorComponentsComponent implements OnInit {
       "|",
       "CreateLink",
       "CreateTable",
-      "Image",
       "|",
       "|",
       "FullScreen"
-    ],
-  };
-
-  public title_box: object = {
-    items: [
-      "Bold",
-      "Italic",
-      "Underline",
-      "|",
-      "FontName",
-      "FontColor",
-      "|",
-      "LowerCase",
-      "UpperCase",
-      "|",
-      "FullScreen",
     ],
   };
 
@@ -78,6 +63,7 @@ export class EditorComponentsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.username=localStorage.getItem('username');
     this.entryservice.getEntries().subscribe(
       res => {
         this.entries = res
@@ -93,9 +79,6 @@ export class EditorComponentsComponent implements OnInit {
   }
   
 
-
-
-
   @ViewChild("fromRTE", { static: false })
   private rteEle: RichTextEditorComponent;
   public value: string = null;
@@ -107,16 +90,31 @@ export class EditorComponentsComponent implements OnInit {
     this.text = this.sanitizer.bypassSecurityTrustHtml(form.value.name);
     this.value = "";
     let date = new Date();
+    this.key=localStorage.getItem('token');
+
     var newEntry = {
       title: form.value.title,
-      body: form.value.name,
+      body: form.value.body,
       date: date.toISOString().slice(0, 10),
-      username: localStorage.getItem('username'),
       lastUpdateTime: date
     }
+    var encEntry=CryptoJS.AES.encrypt(
+      JSON.stringify(newEntry),
+      localStorage.getItem("token")
+    ).toString();
+
     
-    this.entryservice.addEntry(newEntry).subscribe(entry => {
+    //console.log(encEntry);
+
+    var addEntry = {
+      encdata: encEntry,
+      username: localStorage.getItem("username"),
+      date: date
+    };
+  //  console.log(addEntry);
+    this.entryservice.addEntry(addEntry).subscribe((entry) => {
       form.value.title = " ";
+      this.router.navigate(["/journal"]);
 
     });
   }
@@ -128,7 +126,7 @@ export class EditorComponentsComponent implements OnInit {
     });
   }
 
-
+/*
   // add entry
  date:Date;
  
@@ -151,6 +149,7 @@ export class EditorComponentsComponent implements OnInit {
       this.entries = entries;
     });
   }
+*/
 
   // delete entry
   entry : Entry[];
@@ -163,8 +162,6 @@ export class EditorComponentsComponent implements OnInit {
     });
 
   }
-
-  // update entry
 
   
 }

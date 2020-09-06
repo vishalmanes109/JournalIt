@@ -3,10 +3,10 @@ import { Timestamp } from 'rxjs';
 export class Entry{
 
      title:string;
-     id: string;
+     _id: string;
      body:string;
      date:Date;
      username:string;
-     LastUpdateTime:Date;
+     lastUpdateTime:Date;
      
 }

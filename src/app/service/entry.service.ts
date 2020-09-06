@@ -10,11 +10,12 @@ import { DataserviceService } from './dataservice.service';
 })
 export class EntryService {
 
-  private rootUrl ="https://journalit-server.herokuapp.com/api";
+  //private rootUrl ="https://journalit-server.herokuapp.com/api";
+  private rootUrl="http://localhost:8080/api";
 
   constructor(private http: HttpClient, private dataservice: DataserviceService) {}
 
-  getEntries():Observable<Entry[]> {
+  getEntries():Observable<any> {
     let user=localStorage.getItem('username');
     return this.http.get<Entry[]>(
       this.rootUrl+"/entries/"+user);
@@ -55,23 +56,24 @@ export class EntryService {
   addEntry(newEntry) {
     var header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-    return this.http.post<Entry[]>(this.rootUrl +"/postentry", newEntry, { headers: header });
+    return this.http.post<any>(this.rootUrl +"/postentry", newEntry, { headers: header });
 
   } 
 
   // update entry
-  updateEntry(body, date, title, id,username,lastupdatetime): Observable<Entry[]>{
-    var entry={
-      title:title,
-      body:body,
-      id:id,
-      date:date,
-      username:username,
-      lastUpdateTime:lastupdatetime
-    }
+  updateEntry(updentry): Observable<any>{
     var header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-    return this.http.put<Entry[]>(this.rootUrl +"/updateentry/", entry, { headers: header });
+    return this.http.put<any>(this.rootUrl + "/updateentry/", updentry, {
+      headers: header,
+    });
   }
 
+  deleteAll(){
+    var username=localStorage.getItem('username');
+    confirm("Do you want to delete all the entries Once deleted it will not recover" )
+    var header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+    return this.http.delete<any>(this.rootUrl + "/deleteall/"+username, { headers: header });
+  }
 }
