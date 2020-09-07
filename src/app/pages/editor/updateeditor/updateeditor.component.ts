@@ -24,6 +24,7 @@ export class UpdateeditorComponent implements OnInit {
   showentry: Entry;
   body: any = "";
   loading:boolean;
+  username:string;
 
   public tools: object = {
     items: [
@@ -90,8 +91,8 @@ export class UpdateeditorComponent implements OnInit {
 
     this.entryservice.getEntry(this.id).subscribe(
       (res) => {
-        this.key = localStorage.getItem("token").trim();
-
+        this.username = localStorage.getItem("username");
+        this.key = this.username;
         this.showentry = JSON.parse(
           CryptoJS.AES.decrypt(res.encdata, this.key).toString(
             CryptoJS.enc.Utf8
@@ -124,26 +125,27 @@ export class UpdateeditorComponent implements OnInit {
     this.text = this.sanitizer.bypassSecurityTrustHtml(form.value.name);
     this.value = "";
     let date = new Date();
-    this.key = localStorage.getItem("token");
+    this.username = localStorage.getItem("username");
+    this.key = this.username;
 
     var newEntry = {
-      title: form.value.title,
-      body: form.value.body,
-      date: this.showentry.date,
-      lastUpdateTime: date,
+      "title": form.value.title,
+      "body": form.value.body,
+      "date": this.showentry.date,
+      "lastUpdateTime": date,
     };
     var encEntry = CryptoJS.AES.encrypt(
       JSON.stringify(newEntry),
-      localStorage.getItem("token")
+      this.key
     ).toString();
 
     //console.log('from udp:'+encEntry);
 
     var updEntry = {
-      id:this.showentry._id,
-      encdata: encEntry,
-      username: localStorage.getItem("username"),
-      date:this.showentry.date
+      "id":this.showentry._id,
+      "encdata": encEntry,
+      "username": localStorage.getItem("username"),
+      "date":this.showentry.date
     };
     console.log('from upd:'+updEntry);
 

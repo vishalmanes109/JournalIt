@@ -90,26 +90,27 @@ export class EditorComponentsComponent implements OnInit {
     this.text = this.sanitizer.bypassSecurityTrustHtml(form.value.name);
     this.value = "";
     let date = new Date();
-    this.key=localStorage.getItem('token');
+    this.username = localStorage.getItem("username");
+    this.key = this.username;
 
     var newEntry = {
-      title: form.value.title,
-      body: form.value.body,
-      date: date.toISOString().slice(0, 10),
-      lastUpdateTime: date
+      "title": form.value.title,
+      "body": form.value.body,
+      "date": date.toISOString().slice(0, 10),
+      "lastUpdateTime": date
     }
     var encEntry=CryptoJS.AES.encrypt(
       JSON.stringify(newEntry),
-      localStorage.getItem("token")
+      this.key
     ).toString();
 
     
     //console.log(encEntry);
 
     var addEntry = {
-      encdata: encEntry,
-      username: localStorage.getItem("username"),
-      date: date
+      "encdata": encEntry,
+      "username": localStorage.getItem("username"),
+      "date": date
     };
   //  console.log(addEntry);
     this.entryservice.addEntry(addEntry).subscribe((entry) => {

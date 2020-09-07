@@ -43,9 +43,7 @@ export class ShowEntryComponent implements OnInit {
     this.loading=true;
     this.entryservice.getEntry(this.id).subscribe(
       (res) => {
-        this.key = localStorage.getItem("token").trim();
-        
-
+        this.key = localStorage.getItem("username");
         this.showentry = JSON.parse(
           CryptoJS.AES.decrypt(res.encdata, this.key).toString(
             CryptoJS.enc.Utf8

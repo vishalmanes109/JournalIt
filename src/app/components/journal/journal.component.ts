@@ -14,7 +14,7 @@ import * as CryptoJS from 'crypto-js';
   styleUrls: ["./journal.component.css"],
 })
 export class JournalComponent implements OnInit {
-  entries: Entry[] = [];
+  entries: any[] = [];
   username: string;
   isNoEntry = false;
   isoldselected: boolean;
@@ -47,6 +47,7 @@ export class JournalComponent implements OnInit {
     // getting entries sorted by old entry
     this.isoldselected = true;
     this.username = localStorage.getItem("username");
+    this.key = this.username;
     this.entryservice.getEntries().subscribe(
       (res) => {
         if(res.length==0){
@@ -55,10 +56,7 @@ export class JournalComponent implements OnInit {
         }
         else{
           for (var i = 0; i < res.length; i++) {
-            this.entries[i] = JSON.parse(
-              CryptoJS.AES.decrypt(res[i].encdata, this.key).toString(
-                CryptoJS.enc.Utf8
-              )
+            this.entries[i] = JSON.parse(CryptoJS.AES.decrypt(res[i].encdata, this.key).toString(CryptoJS.enc.Utf8)
             );
             this.entries[i]._id = res[i]._id;
           }
@@ -94,7 +92,9 @@ export class JournalComponent implements OnInit {
   }
  
   DeleteAll(){
-    this.entryservice.deleteAll().subscribe();
+    this.entryservice.deleteAll().subscribe(()=>{
+      this.router.navigate(['/journal']);
+    });
     this.router.navigate(['/journal']);
   }
 
@@ -102,25 +102,20 @@ export class JournalComponent implements OnInit {
    
     this.loading=true;
     this.isoldselected = false;
-    this.name = localStorage.getItem("username");
-    this.key = localStorage.getItem("token").trim();
+    this.username = localStorage.getItem("username");
+    this.key = this.username;
     this.entryservice.getSortedEntries().subscribe(
       (res) => {
         if (res.length == 0) {
           this.isNoEntry = true;
           this.loading = false;
         } else {
-          
           for (var i = 0; i < res.length; i++) {
-            this.entries[i] = JSON.parse(
-              CryptoJS.AES.decrypt(res[i].encdata, this.key).toString(
-                CryptoJS.enc.Utf8
-              )
-            );
+            this.entries[i] = JSON.parse(CryptoJS.AES.decrypt((res[i].encdata), this.key).toString(CryptoJS.enc.Utf8));
             this.entries[i]._id = res[i]._id;
           }
           this.loading=false;
-        
+
         }
       },
 
