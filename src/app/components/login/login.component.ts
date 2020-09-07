@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
          this.loginUser.password = CryptoJS.SHA3(
            this.loginUser.password.trim(),{outputLength: 224}
          ).toString();
-         console.log(this.loginUser.password);
      }
   }
 
