@@ -64,11 +64,10 @@ export class EntryService {
   updateEntry(updentry): Observable<any>{
     var header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-    return this.http.put<any>(this.rootUrl + "/updateentry/", updentry, {
+    return this.http.put<any>( this.rootUrl + "/updateentry/", updentry, {
       headers: header,
     });
   }
-
   deleteAll(){
     var username=localStorage.getItem('username');
     confirm("Do you want to delete all the entries Once deleted it will not recover" )

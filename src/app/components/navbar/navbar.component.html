@@ -1,33 +1,37 @@
 
 
 <div>
-<nav class="navbar navbar-expand-sm  navbar nav-color navbar-light">
+<nav class="navbar fixed-top navbar-expand-sm  navbar-light bg-light">
 
-    <a class="navbar-brand " href="#"><img class="logo" src="../../../assets/images/logo/logo2.png" alt="logo" />
+    <img class="logo navbar-brand " src="../../../assets/images/logo/logo2.png" alt="logo" />
 
-    </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav link">
+        <ul class="navbar-nav link nav-text">
             <li class="nav-item">
-                <a class="nav-link nav-text " routerLink="/editor">Editor</a>
+                <a class="nav-link  " routerLink="/">HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-text" routerLink="/about">About</a>
+                <a class="nav-link " routerLink="/about">ABOUT</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-text" routerLink="/journal">Journal</a>
+                <a class="nav-link " routerLink="/journal">JOURNAL</a>
             </li>     
-        </ul>
-        <ul class="navbar-nav">
-            <a class="nav-link"  *ngIf="!authservice.logedIn()" [routerLink]="['/login']"  >LogIn</a>
-            <a class="nav-link" *ngIf="!authservice.logedIn()" [routerLink]="['/register']">Register</a>
-            <a  class="navlink" *ngIf="authservice.logedIn()" (click)="authservice.logout()">LogOut</a>
+            <li class="nav-item">
+                <a class="nav-link" *ngIf="!authservice.logedIn()" [routerLink]="['/login']">LOGIN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" *ngIf="!authservice.logedIn()" [routerLink]="['/register']">REGISTER</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" *ngIf="authservice.logedIn()" (click)="authservice.logout()">LOGOUT</a>
+            </li>
         </ul>
     </div>
 </nav>
-
+<br><br>
 </div>
 

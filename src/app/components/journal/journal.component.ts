@@ -24,6 +24,7 @@ export class JournalComponent implements OnInit {
   private key: string;
   mySubscription: any;
   loading:boolean;
+  isOnlyEntry:boolean;
 
   constructor(
     
@@ -99,8 +100,8 @@ export class JournalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
     this.loading=true;
+    this.isOnlyEntry=false;
     this.isoldselected = false;
     this.username = localStorage.getItem("username");
     this.key = this.username;
@@ -110,11 +111,15 @@ export class JournalComponent implements OnInit {
           this.isNoEntry = true;
           this.loading = false;
         } else {
+          if(res.length==1){
+            this.isOnlyEntry = true;
+          }
           for (var i = 0; i < res.length; i++) {
             this.entries[i] = JSON.parse(CryptoJS.AES.decrypt((res[i].encdata), this.key).toString(CryptoJS.enc.Utf8));
             this.entries[i]._id = res[i]._id;
           }
           this.loading=false;
+          
 
         }
       },

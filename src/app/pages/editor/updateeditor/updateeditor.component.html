@@ -2,11 +2,11 @@
     <app-navbar>
 
     </app-navbar>
-
+    <br><br>
     
     <div>
-        <h3 class="text-info text-center m-2">
-            Edit Your Entry 
+        <h3 class="text-info text-center m-1">
+            Edit Your Entry {{username}}
         </h3>
         <div id='content' class='box-form' style="margin: 0 auto; max-width:1000px; padding:25px;">
             <form (ngSubmit)="onSubmit(rteForm)" #rteForm="ngForm">
@@ -24,7 +24,7 @@
                     <br>
                     <div *ngIf="(name.invalid && name.touched)" class="alert alert-danger">
                         <div *ngIf="name.errors.required">
-                            please write something before submitting.
+                           {{showerror}}
                         </div>
                     </div>
                 </div>

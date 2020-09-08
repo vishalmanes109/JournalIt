@@ -1,9 +1,16 @@
+.inloder{
+    width: 100%;
+    height:100vh;
+    padding: 45%;
+    background-color: rgb(218, 216, 216);
+}
+
 .entrylist{
     width:50%; margin:auto;
     
 }
 .text{
-    align-content: center;
+    text-align: center;
     
 }
 .marginBottom{

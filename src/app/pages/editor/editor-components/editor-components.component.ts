@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
+import { DataserviceService } from 'src/app/service/dataservice.service';
 
 @Component({
   selector: "app-editor-components",
@@ -23,43 +24,24 @@ export class EditorComponentsComponent implements OnInit {
   public entries: Entry[];
   private key:string;
   username:string;
+  public showerror: string = " please enter title and discription ";
 
   public tools: object = {
     items: [
-      "Bold",
-      "Italic",
-      "Underline",
-      "StrikeThrough",
-      "|",
-      "FontName",
-      "FontSize",
-      "FontColor",
-      "BackgroundColor",
-      "|",
-      "LowerCase",
-      "UpperCase",
-      "|",
-      "Formats",
-      "Alignments",
-      "|",
-      "OrderedList",
-      "UnorderedList",
-      "|",
-      "Indent",
-      "Outdent",
-      "|",
-      "CreateLink",
-      "CreateTable",
-      "|",
-      "|",
-      "FullScreen"
-    ],
+      'Bold', 'Italic', 'Underline', 'StrikeThrough', '|',
+      'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
+      'LowerCase', 'UpperCase', '|', 'Undo', 'Redo', '|',
+      'Formats', 'Alignments', '|', 'OrderedList', 'UnorderedList', '|',
+      'Indent', 'Outdent', '|', 'CreateLink', 'CreateTable',
+       '|', 'ClearFormat', 'Print', '|', 'FullScreen']
+
   };
 
   constructor(
     private sanitizer: DomSanitizer,
     private entryservice: EntryService,
-    private router:Router
+    private router:Router,
+    private dataservice:DataserviceService
   ) {}
 
   ngOnInit(): void {
@@ -86,6 +68,7 @@ export class EditorComponentsComponent implements OnInit {
   rteCreated(): void {
     this.rteEle.element.focus();
   }
+
   onSubmit(form: NgForm): void {
     this.text = this.sanitizer.bypassSecurityTrustHtml(form.value.name);
     this.value = "";
@@ -112,10 +95,14 @@ export class EditorComponentsComponent implements OnInit {
       "username": localStorage.getItem("username"),
       "date": date
     };
-  //  console.log(addEntry);
+  // console.log(addEntry);
+    this.showerror = ' ';
     this.entryservice.addEntry(addEntry).subscribe((entry) => {
       form.value.title = " ";
+      this.title='';
+      this.showerror=' ';
       this.router.navigate(["/journal"]);
+
 
     });
   }

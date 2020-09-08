@@ -3,38 +3,46 @@
     
     </app-navbar>
     <br>
+    <br>
     <div  *ngIf="loading else loaded">
-        loading.....
-        <div class=" spinner-border text-primary"></div>
+        <div class="inloder">
+            <div class=" spinner-border text-primary"></div>
+        </div>
         
     </div>
     <ng-template #loaded >
         <div class="container-md ">
-            <h4 class="text p-2">
-                Welcome {{name}}
-            </h4>
+            <div class="center">
+                <h4 class="text">
+                    Welcome {{username}}
+                </h4>
+            </div>
+            
             <div class="text-black-50 mt-1" *ngIf="isNoEntry">
-                <h4>Welcome to journalIt !</h4> <br>
-                <h5>Start your journaling journey with us</h5>
+                <br>
+                <h5>Start your Journaling Journey with JournalIT</h5>
                 <br>
             
             </div>
-            <div>
-                <a  [routerLink]="['/editor']" routerLinkActive="router-link-active"  class="btn btn-outline-success float-md-right m-1">Add Entry</a>
-            </div>
-            <div *ngIf="!isNoEntry">
-                <a (click)="DeleteAll()" [routerLink]="['/journal']" routerLinkActive="router-link-active"
-                    class="btn btn-outline-danger float-md-right m-1">Delete All</a>
-            </div>
-        
-            <div *ngIf="!isNoEntry">
-                <div *ngIf="!isoldselected" class="right">
-                    <button class="btn btn-outline-info float-md-right m-1" (click)="SortDate()"> Old Entries First </button>
+            <div >
+                <div>
+                    <a [routerLink]="['/editor']" routerLinkActive="router-link-active"
+                        class="btn btn-outline-success float-md-right m-1">Add Entry</a>
                 </div>
-                <div *ngIf="isoldselected" class="right">
-                    <button class="btn btn-outline-info float-md-right m-1" (click)="ngOnInit()"> New Entries First </button>
+                <div *ngIf="!isNoEntry">
+                    <a (click)="DeleteAll()" [routerLink]="['/journal']" routerLinkActive="router-link-active"
+                        class="btn btn-outline-danger float-md-right m-1">Delete All</a>
+                </div>
+                <div *ngIf="!isNoEntry && !isOnlyEntry">
+                    <div *ngIf="!isoldselected" class="right">
+                        <button class="btn btn-outline-info float-md-right m-1" (click)="SortDate()"> Old Entries First </button>
+                    </div>
+                    <div *ngIf="isoldselected" class="right">
+                        <button class="btn btn-outline-info float-md-right m-1" (click)="ngOnInit()"> New Entries First </button>
+                    </div>
                 </div>
             </div>
+            
             <div class="marginBottom">
                 <div class="entrylist " *ngFor="let entry of entries">
                     <div [innerHTML]>
@@ -43,10 +51,11 @@
                         <strong>date:</strong> {{entry.date}}
                     </div>
                     <br>
-                    <input type="button" class="btn btn-danger" (click)="deleteEntry(entry)" value="delete ">
-                    <a routerLink="/update"> <input type="button" class="btn btn-primary" (click)="updateEntry(entry)"
-                            value="edit "></a>
-                    <a routerLink="/show-all"> <input type="button" class="btn btn-primary" (click)="showEntry(entry)" value="show"></a>
+                    <div >
+                        <input type="button" class="btn btn-danger  m-1" (click)="deleteEntry(entry)" value="delete ">
+                        <a routerLink="/update"> <input type="button" class="btn btn-primary m-1" (click)="updateEntry(entry)" value="edit "></a>
+                        <a routerLink="/show-all"> <input type="button" class="btn btn-primary m-1" (click)="showEntry(entry)" value="show"></a>
+                    </div>
                     <br>
                     <hr>
                 </div>

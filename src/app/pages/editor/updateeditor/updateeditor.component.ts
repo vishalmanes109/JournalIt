@@ -19,48 +19,26 @@ export class UpdateeditorComponent implements OnInit {
   entry_title: string;
   entry_body: string;
   entry_date: Date;
+  date: Date;
   public entries: Entry[];
   private key: string;
   showentry: Entry;
   body: any = "";
   loading:boolean;
   username:string;
+  showerror: string = " please enter title and discription ";
+
 
   public tools: object = {
     items: [
-      "Bold",
-      "Italic",
-      "Underline",
-      "StrikeThrough",
-      "|",
-      "FontName",
-      "FontSize",
-      "FontColor",
-      "BackgroundColor",
-      "|",
-      "LowerCase",
-      "UpperCase",
-      "|",
-      "Formats",
-      "Alignments",
-      "|",
-      "OrderedList",
-      "UnorderedList",
-      "|",
-      "Indent",
-      "Outdent",
-      "|",
-      "CreateLink",
-      "CreateTable",
-      "|",
-      "|",
-      "FullScreen",
-    ],
+      'Bold', 'Italic', 'Underline', 'StrikeThrough', '|',
+      'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
+      'LowerCase', 'UpperCase', '|', 'Undo', 'Redo', '|',
+      'Formats', 'Alignments', '|', 'OrderedList', 'UnorderedList', '|',
+      'Indent', 'Outdent', '|', 'CreateLink', 'CreateTable',
+       '|', 'ClearFormat', 'Print', 'SourceCode', '|', 'FullScreen']
   };
 
-  public title_box: object = {
-    items: [],
-  };
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -75,8 +53,8 @@ export class UpdateeditorComponent implements OnInit {
 
   ngOnInit(): void {
 
-
   }
+
   @ViewChild("fromRTE", { static: false })
   private rteEle: RichTextEditorComponent;
   public title: string = " ";
@@ -100,17 +78,12 @@ export class UpdateeditorComponent implements OnInit {
         );
         this.showentry._id = res._id;
 
-        //console.log(this.showentry.body);
         this.value = this.showentry.body;
         this.title = this.showentry.title;
         this.date = this.showentry.date;
         this.body = this.sanitizer.bypassSecurityTrustHtml(this.showentry.body);
         this.lastupdatetime = this.showentry.lastUpdateTime;
         this.loading = false;
-
-        /*  if (this.entries.length == 0) {
-          this.isNoEntry = true;
-        }*/
       },
       (err) => {
         if (err instanceof HttpErrorResponse) {
@@ -121,6 +94,7 @@ export class UpdateeditorComponent implements OnInit {
       }
     );
   }
+
   onSubmit(form: NgForm): void {
     this.text = this.sanitizer.bypassSecurityTrustHtml(form.value.name);
     this.value = "";
@@ -139,42 +113,26 @@ export class UpdateeditorComponent implements OnInit {
       this.key
     ).toString();
 
-    //console.log('from udp:'+encEntry);
-
     var updEntry = {
       "id":this.showentry._id,
       "encdata": encEntry,
       "username": localStorage.getItem("username"),
       "date":this.showentry.date
     };
-    console.log('from upd:'+updEntry);
+    //console.log('from upd:'+updEntry);
 
+    this.showerror='';
     this.entryservice.updateEntry(updEntry).subscribe((entry) => {
-      form.value.title = " ";
+      this.title = " ";
+      this.showerror="";
       this.router.navigate(['/journal']);
-    });
+      });
   }
 
   // add entry
-  date: Date;
 
-  addEntry(event) {
-    let date = new Date();
-    var newEntry = {
-      title: this.entry_title,
-      body: this.entry_body,
-      date: date.toISOString().slice(0, 10),
-    };
 
-    this.entryservice.addEntry(newEntry).subscribe((entry) => {
-      this.entry_title = "";
-      this.entry_body = "";
-    });
-
-    this.entryservice.getEntries().subscribe((entries) => {
-      this.entries = entries;
-    });
-  }
+ 
 }
 
 

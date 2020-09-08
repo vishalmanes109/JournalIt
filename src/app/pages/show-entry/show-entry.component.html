@@ -5,8 +5,9 @@
     </app-navbar>
 
     <div *ngIf="loading;else loaded">
-        loading.....
-        <div class=" spinner-border text-primary"></div>
+        <div class="inloder">
+            <div class=" spinner-border text-primary"></div>
+        </div>
     </div>
     <ng-template #loaded>
         <div class="show">

@@ -9,8 +9,8 @@ width: 15%;
 }
 
 .nav-text{
+    color: black;
     font-weight: 900;
-    font-family: 'FontName', Helvetica, Arial, sans-serif;
 }
 
 .link{
@@ -19,6 +19,6 @@ width: 15%;
 
 @media only screen and (max-width: 600px) {
   .logo {
-        width: 75%;
+        width: 65%;
 }
 }

@@ -3,6 +3,7 @@
     <app-navbar>
         
     </app-navbar>
+    <br><br>
      <div >
          <h4 class="text-info text-center m-2">
              Hi {{username}}!
@@ -24,7 +25,7 @@
                     <br>
                     <div *ngIf="(name.invalid && name.touched)" class="alert alert-danger">
                         <div *ngIf="name.errors.required">
-                            please write something before submitting.
+                            {{showerror}}
                         </div>
                     </div>
                 </div>
