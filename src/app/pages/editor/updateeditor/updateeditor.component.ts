@@ -36,7 +36,7 @@ export class UpdateeditorComponent implements OnInit {
       'LowerCase', 'UpperCase', '|', 'Undo', 'Redo', '|',
       'Formats', 'Alignments', '|', 'OrderedList', 'UnorderedList', '|',
       'Indent', 'Outdent', '|', 'CreateLink', 'CreateTable',
-       '|', 'ClearFormat', 'Print', 'SourceCode', '|', 'FullScreen']
+       '|', 'ClearFormat', 'Print', '|', 'FullScreen']
   };
 
 

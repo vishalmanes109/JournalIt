@@ -1,8 +1,9 @@
-.why-us{
 
-    
 
-}
+ .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
 .txt-why-us{
         width: 100%;
         margin:auto;
@@ -12,44 +13,34 @@
     padding-bottom: 5%;
     }
 
-.container{
-    width: 60%;
-    margin: auto;
+.carousel{
+    color:black;
+    background-color: black;
+}
+.carousel-indicators .active{
+    background-color: rgb(145, 56, 247);
 }
 
-.features{
-    width: 100%;
-    margin: auto;
-    position: relative;
-
+.carousel-control-prev{
+    background-color: black;
+    width: 7%;
 }
+.carousel-control-next{
+    background-color: black;
+        width: 7%;
 
-.feature-box{
-    width: 100%;
-    margin: auto;
-    padding:0.5em;
-
-}
-
-.feature-ele{
-    width: 40%;
 }
 
 
 
 
-@media only screen and (max-width: 900px) {
-  .container {
+
+@media only screen and (min-width:900px) {
+  .carousel {
     
-    width: 70%;
+    width: 80%;
     margin: auto;
 }
 }
-@media only screen and (max-width: 500px) {
-  .container {
-    
-    width: 60%;
-    margin: auto;
-}
-}
+
 
