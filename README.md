@@ -85,13 +85,13 @@ JournalIT:
 
 ### Built With
 
-* [ Angular]( Angular)
-* [ Angular CLI version 9.0.6. ]( Angular CLI version 9.0.6.)
-* [ Boostrap]( )
-* [MongoDB]( MongoDB)
-* [Express]( Express)
-* [NodeJs]( NodeJs)
-* [syncfusion rich text editor](syncfusion rich text editor)
+* [ Angular]( https://cli.angular.io/)
+* [ Angular CLI version 9.0.6. ]( https://cli.angular.io/)
+* [ Boostrap]( https://getbootstrap.com/ )
+* [MongoDB]( https://getbootstrap.com/)
+* [Express]( https://expressjs.com/)
+* [NodeJs]( https://nodejs.org/en/)
+* [syncfusion rich text editor](https://www.syncfusion.com/kb/9864/how-to-get-started-easily-with-syncfusion-angular-7-rich-text-editor)
 
 
 <!-- GETTING STARTED -->
