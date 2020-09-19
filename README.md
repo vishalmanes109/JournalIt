@@ -35,7 +35,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="img/logo.png" alt="Logo" width="80" height="80">
+    <img src="img/logo.png" alt="Logo" width="25%" height="25%">
   </a>
 
   <h3 align="center">JournalIT</h3>
@@ -78,8 +78,8 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://myjournalit.herokuapp.com/)
 
-JournalIT:
-** JournalIT is a free website which helps you to keep your digital journal. JournalIT is a free website which keeps all data secured with a complex encryption algorithm. **
+### JournalIT:
+* JournalIT is a free website which helps you to keep your digital journal. JournalIT is a free website which keeps all data secured with a complex encryption algorithm. *
 `vishalmanes109`, `JournalIT`, `crcevishal@gmail.com`
 
 
