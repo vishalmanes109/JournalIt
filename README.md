@@ -88,7 +88,7 @@ JournalIT:
 * [ Angular]( https://cli.angular.io/)
 * [ Angular CLI version 9.0.6. ]( https://cli.angular.io/)
 * [ Boostrap]( https://getbootstrap.com/ )
-* [MongoDB]( https://getbootstrap.com/)
+* [MongoDB]( https://www.mongodb.com/)
 * [Express]( https://expressjs.com/)
 * [NodeJs]( https://nodejs.org/en/)
 * [syncfusion rich text editor](https://www.syncfusion.com/kb/9864/how-to-get-started-easily-with-syncfusion-angular-7-rich-text-editor)
@@ -103,14 +103,15 @@ To get a local copy up and running follow these simple steps.
 
 This is an example of how to list things you need to use the software and how to install them.
 * npm
-*nodejs
-*mongoDB
-*express
+* nodejs
+* mongoDB
+* express
 
+* npm
 ```sh
 npm install npm@latest -g
 ```
-*nodemon
+* nodemon
 ```sh
 npm install nodemon -g
 ```
@@ -127,6 +128,10 @@ git clone https://github.com/vishalmanes109/JournalIt.git
 npm install
 ```
 
+3. Install the Syncfusion packages 
+```sh
+npm install @syncfusion/ej2-angular-richtexteditor --save
+```
 <!-- USAGE EXAMPLES -->
 ## Usage
 
@@ -175,9 +180,7 @@ Project Link: [https://github.com/vishalmanes109/JournalIt](https://github.com/v
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
-* []()
-* []()
+* [ SyncFusion ](https://www.syncfusion.com/kb/9864/how-to-get-started-easily-with-syncfusion-angular-7-rich-text-editor)
 
 
 
@@ -186,17 +189,17 @@ Project Link: [https://github.com/vishalmanes109/JournalIt](https://github.com/v
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=flat-square
-[contributors-url]: https://github.com/github_username/repo/graphs/contributors
+[contributors-url]: https://github.com/vishalmanes109
 [forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=flat-square
-[forks-url]: https://github.com/github_username/repo/network/members
+[forks-url]: https://github.com/vishalmanes109/JournalIt/network/members
 [stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=flat-square
-[stars-url]: https://github.com/github_username/repo/stargazers
+[stars-url]: https://github.com/vishalmanes109/JournalIt/stargazers
 [issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=flat-square
-[issues-url]: https://github.com/github_username/repo/issues
+[issues-url]: https://github.com/vishalmanes109/JournalIt/issues
 [license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=flat-square
-[license-url]: https://github.com/github_username/repo/blob/master/LICENSE.txt
+[license-url]: https://github.com/vishalmanes109/JournalIt/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/github_username
+[linkedin-url]: https://www.linkedin.com/in/vishalm109/
 [product-screenshot]: images/screenshot.png
 
 
