@@ -34,11 +34,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/vishalmanes109/JournalIt">
     <img src="img/logo.png" alt="Logo" width="25%" height="25%">
   </a>
 
-  <h3 align="center">JournalIT</h3>
+  <h2 align="center" >JournalIT</h2>
 
   <p align="center">
     Your Digital Journal 
@@ -79,7 +79,7 @@
 [![Product Name Screen Shot][product-screenshot]](https://myjournalit.herokuapp.com/)
 
 ### JournalIT:
-* JournalIT is a free website which helps you to keep your digital journal. JournalIT is a free website which keeps all data secured with a complex encryption algorithm. *
+* JournalIT is a free website which helps you to keep your digital journal. JournalIT is a free website which keeps all data secured with a complex encryption algorithm. 
 `vishalmanes109`, `JournalIT`, `crcevishal@gmail.com`
 
 
@@ -133,6 +133,11 @@ npm install
 npm install @syncfusion/ej2-angular-richtexteditor --save
 ```
 <!-- USAGE EXAMPLES -->
+## Demo
+    
+<img src="img/features.gif" alt="features.gif" width="80%" height="80%">
+  
+
 ## Usage
 
 JournalIT is used to record unlimited olnine journal/diary with simple UI and encryption.  
