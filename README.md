@@ -34,7 +34,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/vishalmanes109/JournalIt">
+  <a href="https://myjournalit.herokuapp.com/">
     <img src="img/logo.png" alt="Logo" width="25%" height="25%">
   </a>
 
@@ -81,6 +81,13 @@
 ### JournalIT:
 * JournalIT is a free website which helps you to keep your digital journal. JournalIT is a free website which keeps all data secured with a complex encryption algorithm. 
 `vishalmanes109`, `JournalIT`, `crcevishal@gmail.com`
+
+    
+<img align="center" src="img/features.gif" alt="features.gif" width="80%" height="80%">
+
+ <a href="https://myjournalit.herokuapp.com/"> Visit Now
+  </a>
+
 
 
 ### Built With
@@ -133,9 +140,6 @@ npm install
 npm install @syncfusion/ej2-angular-richtexteditor --save
 ```
 <!-- USAGE EXAMPLES -->
-## Demo
-    
-<img src="img/features.gif" alt="features.gif" width="80%" height="80%">
   
 
 ## Usage
