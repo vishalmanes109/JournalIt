@@ -99,7 +99,7 @@
    
 <img align="center" src="img/sc3.png" alt="sc3" width="80%" height="80%">
 
-<img align="center" src="img/sc4.png" alt="sc4" width="30%" height="300px">
+<img align="center" src="img/sc4.png" alt="sc4" width="80%" height="80%">
 
 
 ### Built With
