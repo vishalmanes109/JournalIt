@@ -11,7 +11,7 @@ import { DataserviceService } from './dataservice.service';
 export class EntryService {
 
   //private rootUrl ="https://journalit-server.herokuapp.com/api";
-  private rootUrl ="https://journalit-server.herokuapp.com/api";
+  private rootUrl ="https://localhost:3000/api";
 
   constructor(private http: HttpClient, private dataservice: DataserviceService) {}
 

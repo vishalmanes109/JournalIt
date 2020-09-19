@@ -7,8 +7,9 @@ import { Router } from '@angular/router';
 })
 export class AuthserviceService {
 
-  private regUrl ="https://journalit-server.herokuapp.com/api/register";
-  private logUrl = "https://journalit-server.herokuapp.com/api/login";
+  private regUrl = "https://localhost:3000/register";
+  private logUrl = "https://localhost:3000/login";
+
   constructor( private http:HttpClient , private router:Router) { }
 
   registerUser(user){
