@@ -200,7 +200,7 @@ Project Link: [https://github.com/vishalmanes109/JournalIt](https://github.com/v
 [license-url]: https://github.com/vishalmanes109/JournalIt/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/vishalm109/
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: images/title.png
 
 
 
