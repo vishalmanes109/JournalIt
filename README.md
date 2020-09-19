@@ -79,18 +79,18 @@
 [![Product Name Screen Shot][product-screenshot]](https://myjournalit.herokuapp.com/)
 
 JournalIT:
-**JournalIT is a free website which helps you to keep your digital journal. JournalIT is a free website which keeps all data secured with a complex encryption algorithm. **
+** JournalIT is a free website which helps you to keep your digital journal. JournalIT is a free website which keeps all data secured with a complex encryption algorithm. **
 `vishalmanes109`, `JournalIT`, `crcevishal@gmail.com`
 
 
 ### Built With
 
-* [](Angular)
+* []( Angular)
 * []( Angular CLI version 9.0.6.)
-* [](Boostrap)
-* [](MongoDB)
-* [](Express)
-* [](NodeJs)
+* []( Boostrap)
+* []( MongoDB)
+* []( Express)
+* []( NodeJs)
 * [](syncfusion rich text editor)
 
 
