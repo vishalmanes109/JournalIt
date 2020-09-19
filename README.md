@@ -35,7 +35,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="img/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">JournalIT</h3>
@@ -200,7 +200,7 @@ Project Link: [https://github.com/vishalmanes109/JournalIt](https://github.com/v
 [license-url]: https://github.com/vishalmanes109/JournalIt/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/vishalm109/
-[product-screenshot]: image/title.png
+[product-screenshot]: img/title.png
 
 
 
