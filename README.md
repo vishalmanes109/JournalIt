@@ -189,7 +189,7 @@ Project Link: [https://github.com/vishalmanes109/JournalIt](https://github.com/v
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=flat-square
-[contributors-url]: https://github.com/vishalmanes109/JournalIt
+[contributors-url]: https://github.com/vishalmanes109/JournalIt/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=flat-square
 [forks-url]: https://github.com/vishalmanes109/JournalIt/network/members
 [stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=flat-square
