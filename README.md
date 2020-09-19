@@ -88,6 +88,18 @@
  <a href="https://myjournalit.herokuapp.com/"> Visit Now
   </a>
 
+### screnshots
+
+   
+<img align="center" src="img/sc1.jpg" alt="features.gif" width="80%" height="80%">
+
+   
+<img align="center" src="img/sc2.jpg" alt="features.gif" width="80%" height="80%">
+
+   
+<img align="center" src="img/sc3.jpg" alt="features.gif" width="80%" height="80%">
+
+<img align="center" src="img/sc4.jpg" alt="features.gif" width="80%" height="80%">
 
 
 ### Built With
